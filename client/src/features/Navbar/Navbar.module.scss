@@ -1,0 +1,91 @@
+// --- theme setup
+.navbar {
+   &.theme-dark {
+      --bg-color: var(--color-black);
+      --text-color: var(--color-white);
+      --border-color: var(--color-primary-light);
+      --highlight-color: var(--color-primary);
+      --hover-color: var(--color-primary-dark);
+   }
+
+   &.theme-light {
+      --bg-color: var(--color-white);
+      --text-color: var(--color-black);
+      --border-color: var(--color-secondary-dark);
+      --highlight-color: var(--color-secondary);
+      --hover-color: var(--color-secondary-light);
+   }
+
+   // --- transition timing
+   --transition-rate: 150ms;
+   &.theme-light,
+   &.theme-dark {
+      --transition-rate: var(--theme-transition);
+   }
+
+   --transition: background-color var(--transition-rate) ease, color var(--transition-rate) ease,
+      border-bottom var(--transition-rate) ease;
+}
+
+// --- component css
+.navbar {
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   border-bottom: 3px solid var(--border-color);
+
+   display: flex;
+   z-index: 999;
+
+   transition: var(--transition), transform 0s;
+
+   & > button {
+      font-size: 1rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      border: none;
+      padding: 0.5rem;
+      width: 10rem;
+      transition: var(--transition);
+
+      &:not(.active):hover {
+         background-color: var(--hover-color);
+      }
+
+      &.active {
+         background-color: var(--highlight-color);
+      }
+   }
+
+   & > .brand {
+      margin-left: auto;
+      padding: 0.5rem;
+      opacity: 1;
+      transition: opacity 1s ease 500ms, var(--transition);
+
+      &:not(.isVisible) {
+         opacity: 0;
+         transition: opacity 1s ease, var(--transition);
+      }
+   }
+}
+
+// --- 'stick' animation
+.navbar {
+   &:not(.isStatic) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      transform: translateY(0);
+   }
+
+   &.isStatic {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 100%; // move to top of page
+      transform: translateY(100%); // and translate down
+      transition: var(--transition), transform 300ms ease-in-out;
+   }
+}

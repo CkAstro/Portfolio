@@ -1,0 +1,105 @@
+// cSpell:words noselect callout
+// globals
+:root {
+   --color-primary: #113377;
+   --color-primary-dark: #0e295f;
+   --color-primary-light: #205acf;
+
+   --color-secondary: #568ea3;
+   --color-secondary-dark: #457282;
+   --color-secondary-light: #6cb2cc;
+   --color-secondary-light-gs: #89acb9;
+
+   --color-black: #1e1e1e;
+   --color-white: #fbf9ff;
+
+   --color-red: #bb7e8c;
+   --color-red-80: #966570;
+   --color-red-bold: #d00000;
+
+   --color-brown: #705d56;
+   --color-olive: #3f4639;
+
+   --theme-transition: 300ms;
+}
+
+// use border-box on all
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+body,
+html {
+   width: 100vw;
+   height: 100vh;
+   margin: 0;
+   padding: 0;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+   font-weight: 400;
+   font-size: 16px;
+   color: var(--color-black);
+   background: var(--color-white);
+}
+
+:global {
+   // remove text selection
+   .noselect {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+   }
+
+   // remove scrollbar
+   .noscrollbar {
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+         display: none;
+      }
+   }
+   .scrollable {
+      -ms-overflow-style: none;
+      overflow: scroll;
+   }
+
+   // center child
+   .flexCenter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .fillContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+   }
+
+   // --- font weights
+   .w900 {
+      font-weight: 900;
+   }
+
+   .w700 {
+      font-weight: 700;
+   }
+
+   .w100 {
+      font-weight: 100;
+   }
+}
+
+// ----- layout troubleshooting (uncomment to view all borders) -----
+// * {
+//    background: #000 !important;
+//    color: #0f0 !important;
+//    outline: solid #f00 1px !important;
+// }

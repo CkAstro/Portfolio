@@ -1,0 +1,38 @@
+.themeToggle {
+   --toggle-color: yellow;
+   --toggle-position: 0%;
+   --toggle-border: var(--color-white);
+   --toggle-background: var(--color-black);
+
+   :global(.theme-dark) & {
+      --toggle-color: purple;
+      --toggle-position: 100%;
+      --toggle-border: var(--color-black);
+      --toggle-background: var(--color-white);
+   }
+}
+
+.themeToggle {
+   position: fixed;
+   bottom: 1rem;
+   right: 1rem;
+   z-index: 1000;
+   width: 2rem;
+   height: 0.5rem;
+   border-radius: 0.25rem;
+   border: 2px solid var(--toggle-border);
+   background-color: var(--toggle-background);
+
+   & > div {
+      position: absolute;
+      right: var(--toggle-position);
+      top: 50%;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+
+      background-color: var(--toggle-color);
+      transform: translate(var(--toggle-position), -50%);
+      transition: all var(--theme-transition) ease;
+   }
+}
