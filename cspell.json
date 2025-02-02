@@ -19,7 +19,11 @@
       "roboto",
       "kolb",
       "noscrollbar",
-      "nucleo"
+      "nucleo",
+      "GLSL",
+      "reversi",
+      "datavis",
+      "circumstellar"
    ],
    "ignorePaths": ["package.json", "package-lock.json"],
    "useGitignore": true,
