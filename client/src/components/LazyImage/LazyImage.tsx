@@ -31,6 +31,14 @@ export const LazyImage: React.FC<LazyImageProps> = ({
    const containerRef = useRef<HTMLDivElement>(null);
 
    const [width, height, responsiveUrl] = useMemo(() => {
+      if (sizes.length === 0) {
+         console.warn(
+            'A size is required for dynamic image. Since none was provided, no image will be shown for ',
+            imageUri
+         );
+         return [0, 0, ''];
+      }
+
       const deviceWidth = window.innerWidth;
       const sizeIndex = sizes.findIndex(({ maxSize }) => deviceWidth < maxSize);
 
@@ -67,6 +75,8 @@ export const LazyImage: React.FC<LazyImageProps> = ({
          observer.disconnect();
       };
    }, [rootId, rootMargin, responsiveUrl]);
+
+   if (sizes.length === 0) return null;
 
    return (
       <div

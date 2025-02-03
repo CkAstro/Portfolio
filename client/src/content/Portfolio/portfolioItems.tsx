@@ -11,18 +11,17 @@ export const portfolioItems: PortfolioItem[] = [
    {
       header: (
          <>
-            Multiplayer <span>Reversi</span>
+            OpenSCAD <span>Spline</span> Module
          </>
       ),
-      tech: 'React / Node / MongoDB / Websocket',
-      description:
-         'Online multi-player board game. Supports multiple games, observer mode, and replays.',
-      imageUri: 'reversi_showcase',
-      altText: 'Reversi',
+      tech: 'Node / Algorithms',
+      description: '..',
+      imageUri: 'scad_showcase',
+      altText: 'OpenSCAD Splines',
       imageSizes: [
-         { width: 244, height: 153, maxSize: 600 },
-         { width: 366, height: 229, maxSize: 800 },
-         { width: 488, height: 305, maxSize: -1 },
+         { width: 244, height: 200, maxSize: 600 },
+         { width: 366, height: 300, maxSize: 800 },
+         { width: 488, height: 400, maxSize: -1 },
       ],
    },
    {
@@ -39,23 +38,6 @@ export const portfolioItems: PortfolioItem[] = [
          { width: 244, height: 153, maxSize: 600 },
          { width: 366, height: 229, maxSize: 800 },
          { width: 488, height: 305, maxSize: -1 },
-      ],
-   },
-   {
-      header: (
-         <>
-            Behind the scenes of a <span>neural network</span>
-         </>
-      ),
-      tech: 'React / Canvas / Data Processing / REST',
-      description:
-         'A hand-writing number-guessing network. Learn in detail how it works, and help train it.',
-      imageUri: 'neuralnet_showcase',
-      altText: 'NeuralNet',
-      imageSizes: [
-         { width: 244, height: 240, maxSize: 600 },
-         { width: 366, height: 360, maxSize: 800 },
-         { width: 488, height: 480, maxSize: -1 },
       ],
    },
    {
@@ -105,6 +87,40 @@ export const portfolioItems: PortfolioItem[] = [
          { width: 244, height: 153, maxSize: 600 },
          { width: 366, height: 229, maxSize: 800 },
          { width: 488, height: 305, maxSize: -1 },
+      ],
+   },
+   {
+      header: (
+         <>
+            Multiplayer <span>Reversi</span>
+         </>
+      ),
+      tech: 'React / Node / MongoDB / Websocket',
+      description:
+         'Online multi-player board game. Supports multiple games, observer mode, and replays.',
+      imageUri: 'reversi_showcase',
+      altText: 'Reversi',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
+   },
+   {
+      header: (
+         <>
+            Behind the scenes of a <span>neural network</span>
+         </>
+      ),
+      tech: 'React / Canvas / Data Processing / REST',
+      description:
+         'A hand-writing number-guessing network. Learn in detail how it works, and help train it.',
+      imageUri: 'neuralnet_showcase',
+      altText: 'NeuralNet',
+      imageSizes: [
+         { width: 244, height: 240, maxSize: 600 },
+         { width: 366, height: 360, maxSize: 800 },
+         { width: 488, height: 480, maxSize: -1 },
       ],
    },
 ];
