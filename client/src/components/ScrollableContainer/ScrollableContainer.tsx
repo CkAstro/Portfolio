@@ -13,6 +13,7 @@ interface ScrollableContainerProps {
    children: ValidChild[];
    header?: ValidChild;
    navbar: NavbarConstructor;
+   containerId: string;
 }
 
 const easeOut = (p: number): number => p * (2 - p);
@@ -25,6 +26,7 @@ export const ScrollableContainer: React.FC<ScrollableContainerProps> = ({
    children,
    header,
    navbar,
+   containerId,
 }) => {
    const [containerRef, idList, visibleSection] = useObserveSections(children);
 
@@ -64,6 +66,7 @@ export const ScrollableContainer: React.FC<ScrollableContainerProps> = ({
    return (
       <div
          ref={containerRef}
+         id={containerId}
          className={[styles.scrollableContainer, 'scrollable', 'noscrollbar'].join(' ')}
       >
          {header ?? null}

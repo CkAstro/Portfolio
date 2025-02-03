@@ -3,7 +3,8 @@ interface PortfolioItem {
    tech: string | React.ReactElement;
    description: string | React.ReactElement;
    imageUri: string;
-   alt: string;
+   altText: string;
+   imageSizes: { width: number; height: number; maxSize: number }[];
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -16,8 +17,13 @@ export const portfolioItems: PortfolioItem[] = [
       tech: 'React / Node / MongoDB / Websocket',
       description:
          'Online multi-player board game. Supports multiple games, observer mode, and replays.',
-      imageUri: '/img/reversi_tablet.webp',
-      alt: 'Reversi',
+      imageUri: 'reversi_showcase',
+      altText: 'Reversi',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
    },
    {
       header: (
@@ -27,8 +33,13 @@ export const portfolioItems: PortfolioItem[] = [
       ),
       tech: 'WebGL / GLSL / React / Node',
       description: 'Upload and view volumetric data.',
-      imageUri: '/img/datavis_display.webp',
-      alt: 'DataVis',
+      imageUri: 'datavis_showcase',
+      altText: 'DataVis',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
    },
    {
       header: (
@@ -39,8 +50,13 @@ export const portfolioItems: PortfolioItem[] = [
       tech: 'React / Canvas / Data Processing / REST',
       description:
          'A hand-writing number-guessing network. Learn in detail how it works, and help train it.',
-      imageUri: '/img/network.webp',
-      alt: 'NeuralNet',
+      imageUri: 'neuralnet_showcase',
+      altText: 'NeuralNet',
+      imageSizes: [
+         { width: 244, height: 240, maxSize: 600 },
+         { width: 366, height: 360, maxSize: 800 },
+         { width: 488, height: 480, maxSize: -1 },
+      ],
    },
    {
       header: (
@@ -50,8 +66,13 @@ export const portfolioItems: PortfolioItem[] = [
       ),
       tech: 'WebGL / GLSL / React / Express',
       description: 'Watch the evolution of a fluid instability in full 3D.',
-      imageUri: '/img/instability.webp',
-      alt: 'Fluid Instability',
+      imageUri: 'instability_showcase',
+      altText: 'Fluid Instability',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
    },
    {
       header: (
@@ -61,8 +82,13 @@ export const portfolioItems: PortfolioItem[] = [
       ),
       tech: 'Canvas / REST / Post-Processing',
       description: 'Select from 36 CSM research models and view + export data in detail.',
-      imageUri: '/img/csm.webp',
-      alt: 'Circumstellar Data',
+      imageUri: 'csm_showcase',
+      altText: 'Circumstellar Data',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
    },
    {
       header: (
@@ -73,7 +99,12 @@ export const portfolioItems: PortfolioItem[] = [
       tech: 'WebGL / GLSL / Post-Processing',
       description:
          'Interact with a supernova simulation and see how emission changes with the view.',
-      imageUri: '/img/emission.webp',
-      alt: 'Supernova Emission',
+      imageUri: 'emission_showcase',
+      altText: 'Supernova Emission',
+      imageSizes: [
+         { width: 244, height: 153, maxSize: 600 },
+         { width: 366, height: 229, maxSize: 800 },
+         { width: 488, height: 305, maxSize: -1 },
+      ],
    },
 ];

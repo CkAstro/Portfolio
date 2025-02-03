@@ -23,7 +23,8 @@
       "GLSL",
       "reversi",
       "datavis",
-      "circumstellar"
+      "circumstellar",
+      "neuralnet"
    ],
    "ignorePaths": ["package.json", "package-lock.json"],
    "useGitignore": true,

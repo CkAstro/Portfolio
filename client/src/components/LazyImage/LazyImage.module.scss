@@ -1,0 +1,7 @@
+.lazyImage__container {
+   opacity: 0;
+   transition: opacity 500ms ease;
+   &.loaded {
+      opacity: 1;
+   }
+}

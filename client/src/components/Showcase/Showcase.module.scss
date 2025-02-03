@@ -9,16 +9,16 @@
    }
 }
 
-.showcase__image {
-   width: 400px;
-   height: 300px;
-
-   border: 2px solid var(--color-black);
-}
-
 .showcase__content {
    width: 60%;
    flex: 1 1 auto;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 2rem;
+
+   align-items: flex-start;
 
    h2 {
       margin: 0;
@@ -35,4 +35,8 @@
       padding: 0;
       color: var(--color-primary);
    }
+}
+
+.showcase:nth-child(2n + 1) .showcase__content {
+   align-items: flex-end;
 }

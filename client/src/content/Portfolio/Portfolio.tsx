@@ -1,4 +1,4 @@
-import { Section, Showcase } from '@/components';
+import { Section, Showcase, LazyImage } from '@/components';
 import { portfolioItems } from './portfolioItems';
 import type { SectionProps } from '../types';
 import styles from '../content.module.scss';
@@ -13,14 +13,13 @@ export const Portfolio: React.FC<SectionProps> = ({ id }) => (
       }
       className={[styles.contentContainer, styles.portfolio].join(' ')}
    >
-      {portfolioItems.map(({ header, tech, description, imageUri, alt }) => (
+      {portfolioItems.map(({ header, tech, description, imageUri, altText, imageSizes }) => (
          <Showcase
-            key={alt}
+            key={altText}
             header={header}
             tech={tech}
             description={description}
-            imageUri={imageUri}
-            alt={alt}
+            image={<LazyImage sizes={imageSizes} altText={altText} imageUri={imageUri} />}
          />
       ))}
    </Section>
