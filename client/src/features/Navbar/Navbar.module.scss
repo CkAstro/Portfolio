@@ -69,6 +69,36 @@
    }
 }
 
+// ---
+.navbar {
+   @media (width < 960px) {
+      button {
+         width: 7rem;
+      }
+   }
+
+   @media (width < 736px) {
+      button {
+         width: 5rem;
+      }
+
+      button,
+      .brand {
+         font-size: 0.75rem;
+      }
+   }
+
+   @media (width < 540px) {
+      button {
+         width: 4.5rem;
+      }
+
+      .brand {
+         display: none;
+      }
+   }
+}
+
 // --- 'stick' animation
 .navbar {
    &:not(.isStatic) {

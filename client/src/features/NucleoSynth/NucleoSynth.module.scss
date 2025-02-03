@@ -1,0 +1,60 @@
+.nucleoSynth {
+   background-color: #2e2e2e;
+   overflow: hidden;
+}
+
+// --- isotopes
+.isotope {
+   //
+   --highlight: #aab9bb;
+   &.isStable {
+      --highlight: #c33;
+   }
+
+   --dim: var(--color-black);
+   color: var(--dim);
+
+   transition: background-color 1000ms;
+   & > &__weight {
+      transition: color 2000ms ease-out;
+   }
+}
+
+.isotope {
+   position: absolute;
+   width: var(--isotope-gap);
+   height: var(--isotope-gap);
+   background: #2e2e2e;
+   line-height: 0.9;
+
+   & > &__element {
+      font-size: var(--text-size);
+      font-weight: 900;
+   }
+
+   & > &__weight,
+   & > &__protons {
+      position: absolute;
+      left: var(--text-offset);
+      font-size: var(--text-small);
+      font-weight: 700;
+   }
+
+   & > &__weight {
+      top: var(--text-offset);
+   }
+
+   & > &__protons {
+      bottom: var(--text-offset);
+   }
+
+   &:hover,
+   &.mouseOver {
+      background-color: #3e3e3e;
+   }
+
+   &:hover > &__weight,
+   &.mouseOver > &__weight {
+      color: var(--highlight);
+   }
+}

@@ -1,4 +1,5 @@
 import { Section } from '@/components';
+import { NucleoSynth } from '@/features';
 import type { SectionProps } from '../types';
 import styles from '../content.module.scss';
 
@@ -14,6 +15,6 @@ export const Home: React.FC<SectionProps> = ({ id }) => (
       header={<Header />}
       className={[styles.contentContainer, styles.home].join(' ')}
    >
-      <div>Home</div>
+      <NucleoSynth />
    </Section>
 );
