@@ -16,9 +16,6 @@
 .contact {
    color: var(--color-white);
    background-color: var(--color-black);
-
-   // :global(.theme-dark) & {
-   // }
 }
 
 .research {
@@ -34,4 +31,14 @@
 .portfolio,
 .contact {
    min-height: 100vh;
+}
+
+.portfolio .imageContainer {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   padding: 1rem;
+
+   max-width: 1024px;
+   margin: 0 auto;
 }
