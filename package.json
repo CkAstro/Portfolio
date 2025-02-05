@@ -11,9 +11,9 @@
       "dev": "npm-run-all --parallel dev:*",
       "release": "npm run lint && npm run format:check && npm run ts-check && npm run spellcheck && npm run test && npm run build",
       "build": "npm run build:production",
-      "build:production": "npm run clean:dist && webpack --node-env production --config webpack/webpack.config.cjs",
+      "build:production": "npm run --prefix client build:production && npm run --prefix server build:production",
       "build:development": "npm run clean:dist && webpack --node-env development --config webpack/webpack.config.cjs",
-      "bundle-analysis": "webpack --node-env production --env showBundleAnalysis --config webpack/webpack.config.cjs",
+      "bundle-analysis": "npm run --prefix client bundle-analysis",
       "lint": "eslint . --max-warnings 0",
       "lint:fix": "npm run lint -- --fix",
       "test": "npm run test:client && npm run test:server",
@@ -58,6 +58,7 @@
       "lint-staged": "^15.2.7",
       "mini-css-extract-plugin": "^2.9.0",
       "npm-run-all": "^4.1.5",
-      "prettier": "^3.3.2"
+      "prettier": "^3.3.2",
+      "webpack-cli": "^6.0.1"
    }
 }

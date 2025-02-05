@@ -25,5 +25,49 @@ module.exports = function () {
          historyApiFallback: true,
       },
       devtool: 'source-map',
+      module: {
+         rules: [
+            {
+               /* separate loader for non-module (index.scss) require so that
+                * production and development can both use global classes without
+                * requiring :global {} definition
+                */
+               test: /\.(s?)css$/,
+               exclude: /\.module\.scss$/,
+               use: [
+                  'style-loader',
+                  'css-loader',
+                  'postcss-loader',
+                  {
+                     loader: 'sass-loader',
+                     options: {
+                        api: 'modern',
+                     },
+                  },
+               ],
+            },
+            {
+               test: /\.module\.(s?)css$/,
+               use: [
+                  'style-loader',
+                  {
+                     loader: 'css-loader',
+                     options: {
+                        modules: {
+                           localIdentName: '[local]_[hash:base64:5]',
+                        },
+                     },
+                  },
+                  'postcss-loader',
+                  {
+                     loader: 'sass-loader',
+                     options: {
+                        api: 'modern',
+                     },
+                  },
+               ],
+            },
+         ],
+      },
    };
 };

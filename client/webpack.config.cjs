@@ -2,7 +2,7 @@
 
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
@@ -72,7 +72,7 @@ function webpackFrontEnd() {
          new CopyWebpackPlugin({
             patterns: [{ from: '../public', noErrorOnMissing: false }],
          }),
-         new Dotenv({ path: '.env' }),
+         // new Dotenv({ path: '.env' }),
       ],
       resolve: {
          alias: {
@@ -104,27 +104,6 @@ function webpackFrontEnd() {
                generator: {
                   dataUrl: (content) => svgToMiniDataURI(content.toString()),
                },
-            },
-            {
-               test: /\.(s?)css$/,
-               use: [
-                  'style-loader',
-                  {
-                     loader: 'css-loader',
-                     options: {
-                        modules: {
-                           localIdentName: '[local]_[hash:base64:5]',
-                        },
-                     },
-                  },
-                  'postcss-loader',
-                  {
-                     loader: 'sass-loader',
-                     options: {
-                        api: 'modern',
-                     },
-                  },
-               ],
             },
          ],
       },

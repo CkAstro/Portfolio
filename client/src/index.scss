@@ -45,56 +45,56 @@ html {
    background: var(--color-white);
 }
 
-:global {
-   // remove text selection
-   .noselect {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-   }
+// --- global classes
 
-   // remove scrollbar
-   .noscrollbar {
-      scrollbar-width: none;
+// remove text selection
+.noselect {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
 
-      &::-webkit-scrollbar {
-         display: none;
-      }
-   }
-   .scrollable {
-      -ms-overflow-style: none;
-      overflow: scroll;
-   }
+// remove scrollbar
+.noscrollbar {
+   scrollbar-width: none;
 
-   // center child
-   .flexCenter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+   &::-webkit-scrollbar {
+      display: none;
    }
+}
+.scrollable {
+   -ms-overflow-style: none;
+   overflow: scroll;
+}
 
-   .fillContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-   }
+// center child
+.flexCenter {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
 
-   // --- font weights
-   .w900 {
-      font-weight: 900;
-   }
+.fillContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
 
-   .w700 {
-      font-weight: 700;
-   }
+// --- font weights
+.w900 {
+   font-weight: 900;
+}
 
-   .w100 {
-      font-weight: 100;
-   }
+.w700 {
+   font-weight: 700;
+}
+
+.w100 {
+   font-weight: 100;
 }
 
 // ----- layout troubleshooting (uncomment to view all borders) -----
