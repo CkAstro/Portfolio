@@ -1,3 +1,4 @@
+export * from './AnimatedCube';
 export * from './LazyImage';
 export * from './ScrollableContainer';
 export * from './Section';

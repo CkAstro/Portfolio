@@ -40,5 +40,11 @@
    padding: 1rem;
 
    max-width: 1024px;
+   width: 1024px;
    margin: 0 auto;
+   background-color: var(--color-white);
+
+   & > * {
+      flex: 0 0 calc(100% / 2 - 3rem);
+   }
 }

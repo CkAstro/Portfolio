@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useObserveSections } from './useObserveSections';
+import { useOnScroll, type OnScroll } from './useOnScroll';
 import styles from './ScrollableContainer.module.scss';
 
 type ValidChild = React.ReactElement<{ id: string }>;
@@ -14,6 +15,7 @@ interface ScrollableContainerProps {
    header?: ValidChild;
    navbar: NavbarConstructor;
    containerId: string;
+   onScroll?: OnScroll;
 }
 
 const easeOut = (p: number): number => p * (2 - p);
@@ -27,8 +29,10 @@ export const ScrollableContainer: React.FC<ScrollableContainerProps> = ({
    header,
    navbar,
    containerId,
+   onScroll,
 }) => {
    const [containerRef, idList, visibleSection] = useObserveSections(children);
+   useOnScroll(containerRef, onScroll);
 
    const scrollTo = useCallback(
       (id: string) => {

@@ -12,7 +12,7 @@ type FC = React.FC;
 /**
  * A return handle for setTimeout( ) to allow cancellation.
  */
-type TimeoutHandle = ReturnType<typeof setTimeout>;
+type TimeoutHandle = ReturnType<typeof setTimeout> | null;
 
 /**
  * Exposed React component for use with React.forwardRef

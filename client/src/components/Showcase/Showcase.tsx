@@ -8,6 +8,7 @@ interface ShowcaseProps {
    onPointerEnter: () => void;
    onPointerLeave: () => void;
    isActive: boolean;
+   onClick: () => void;
 }
 
 export const Showcase: React.FC<ShowcaseProps> = ({
@@ -18,8 +19,17 @@ export const Showcase: React.FC<ShowcaseProps> = ({
    onPointerEnter,
    onPointerLeave,
    isActive,
+   onClick,
 }) => (
-   <div className={styles.showcase} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave}>
+   // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+   <div
+      className={styles.showcase}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+   >
       <div className={styles.showcase__image}>{image}</div>
       <div
          className={[styles.showcase__content, isActive ? styles.active : styles.hidden].join(' ')}

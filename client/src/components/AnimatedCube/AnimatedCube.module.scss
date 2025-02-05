@@ -1,0 +1,68 @@
+// ---
+.cubeContainer {
+   &.transitioning {
+      transform-style: preserve-3d;
+      transform-origin: var(--origin);
+
+      --angle: 0deg;
+      &.left,
+      &.bottom {
+         --angle: 90deg;
+      }
+      &.right,
+      &.top {
+         --angle: -90deg;
+      }
+      &.main {
+         --angle: 0deg;
+      }
+
+      &.left,
+      &.right {
+         transform: rotateY(var(--angle));
+      }
+
+      &.top,
+      &.bottom {
+         transform: rotateX(var(--angle));
+      }
+   }
+   &:not(.transitioning) {
+      transform-style: flat;
+      transform-origin: unset;
+   }
+}
+
+// --- cube faces
+.cubeContainer {
+   .front {
+      transform: rotateY(0deg);
+      position: absolute;
+   }
+
+   .top,
+   .left,
+   .right,
+   .bottom,
+   .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-origin: var(--origin);
+   }
+   .top {
+      transform: rotateX(90deg);
+   }
+   .left {
+      transform: rotateY(-90deg);
+   }
+   .right {
+      transform: rotateY(90deg);
+   }
+   .bottom {
+      transform: rotateX(-90deg);
+   }
+   .back {
+      transform: rotateY(180deg);
+   }
+}
