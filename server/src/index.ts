@@ -21,7 +21,7 @@ app.use(requestLogger);
 app.use('/api', apiRouter);
 
 // ----- static serving ----- //
-app.use(express.static('../../client/dist')); // NOTE: this MUST come after API requests
+app.use(express.static('client/dist')); // NOTE: this MUST come after API requests
 
 // ----- unknown endpoint ----- //
 app.use(unknownEndpoint);

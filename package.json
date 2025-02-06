@@ -14,6 +14,7 @@
       "build:production": "npm run --prefix client build:production && npm run --prefix server build:production",
       "build:development": "npm run clean:dist && webpack --node-env development --config webpack/webpack.config.cjs",
       "bundle-analysis": "npm run --prefix client bundle-analysis",
+      "deploy": "pm2 restart portfolio || pm2 start server/dist/server.cjs --name portfolio",
       "lint": "eslint . --max-warnings 0",
       "lint:fix": "npm run lint -- --fix",
       "test": "npm run test:client && npm run test:server",

@@ -1,6 +1,7 @@
 /* eslint-env node */
 
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -31,6 +32,7 @@ const common = () => ({
             },
          },
       }),
+      new Dotenv({ path: '.env' }),
    ],
    resolve: {
       alias: {
