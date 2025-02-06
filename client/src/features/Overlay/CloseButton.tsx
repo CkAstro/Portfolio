@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import type { OverlayStatus } from './useOverlay';
 
+// const leftArrowPath = 'M12 4l-8 4.5M12 12l-8-4.5';
+const rightArrowPath = 'M12 8.5l-8-4.5M12 7.5l-8 4.5';
+const crossPath = 'M4 12l8-8M4 4l8 8';
+
 export const CloseButton: React.FC<{ status: OverlayStatus; onClick: () => void }> = ({
    status,
    onClick,
@@ -21,28 +25,7 @@ export const CloseButton: React.FC<{ status: OverlayStatus; onClick: () => void 
          <path
             strokeWidth={2}
             fill="none"
-            // stroke="var(--color-black)"
-            d="M2.5 4l8 8"
-            transform={
-               hasMouseOver
-                  ? 'translate(0, -3.5)'
-                  : status === 'showing'
-                  ? 'translate(0, 3.5)'
-                  : 'translate(0, 0)'
-            }
-         />
-         <path
-            strokeWidth={2}
-            fill="none"
-            // stroke="var(--color-black)"
-            d="M2.5 12l8-8"
-            transform={
-               hasMouseOver
-                  ? 'translate(0, 3.5)'
-                  : status === 'showing'
-                  ? 'translate(0, -3.5)'
-                  : 'translate(0, 0)'
-            }
+            d={hasMouseOver || status === 'hiding' ? rightArrowPath : crossPath}
          />
       </svg>
    );

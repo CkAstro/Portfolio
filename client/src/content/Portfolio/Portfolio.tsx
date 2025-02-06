@@ -12,7 +12,7 @@ import type { SectionProps } from '../types';
 import styles from '../content.module.scss';
 
 export const Portfolio: React.FC<SectionProps> = ({ id }) => {
-   const { showOverlay } = useAppContext();
+   const { showOverlay, hideOverlay } = useAppContext();
    const [activeShowcase, setActiveShowcase] = useState(-1);
 
    const cubeControls = useRef<AnimatedCubeControls>(null);
@@ -34,13 +34,21 @@ export const Portfolio: React.FC<SectionProps> = ({ id }) => {
       >
          <AnimatedCube
             ref={cubeControls}
-            altFace={<Overlay onClose={(): void => cubeControls.current?.toMainFace()} />}
+            altFace={
+               <Overlay
+                  onClose={(): void => {
+                     cubeControls.current?.toMainFace();
+                     hideOverlay();
+                  }}
+               />
+            }
             altFacePosition="right"
             style={{ margin: '0 auto' }}
          >
             <div className={styles.imageContainer}>
-               {portfolioItems.map(
-                  ({ header, tech, description, imageUri, altText, imageSizes }, index) => (
+               {portfolioItems
+                  .slice(0, 4)
+                  .map(({ header, tech, description, imageUri, altText, imageSizes }, index) => (
                      <Showcase
                         onClick={(): void => handleClick(<h1>{header}</h1>)}
                         key={altText}
@@ -54,8 +62,7 @@ export const Portfolio: React.FC<SectionProps> = ({ id }) => {
                            <LazyImage sizes={imageSizes} altText={altText} imageUri={imageUri} />
                         }
                      />
-                  )
-               )}
+                  ))}
             </div>
          </AnimatedCube>
       </Section>

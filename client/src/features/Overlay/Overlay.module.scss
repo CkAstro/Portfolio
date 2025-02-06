@@ -1,25 +1,46 @@
 .overlay__container {
    display: flex;
-   gap: 0.25rem;
-   background-color: var(--color-white);
+   gap: 2px;
+   background-color: var(--color-secondary);
 
    width: 100%;
    height: 100%;
 
-   padding: 1rem;
+   .overlay__sidebar {
+      width: 4rem;
+      position: relative;
 
-   .overlay__sidebar > svg {
-      width: 2rem;
-      height: 2rem;
+      &::after {
+         content: '';
+         position: absolute;
+         right: 0px;
+         width: 2px;
+         top: 1.25rem;
+         bottom: 1.25rem;
+         background-color: var(--color-white);
+      }
 
-      path {
-         transition: all 150ms ease;
-         stroke: var(--color-black);
+      display: flex;
+      justify-content: center;
+
+      padding: 1rem 0;
+
+      > svg {
+         width: 2rem;
+         height: 2rem;
+
+         path {
+            transition: all 150ms ease;
+            stroke: var(--color-white);
+         }
       }
    }
 
    .overlay__content {
       width: 100%;
       flex-shrink: 1;
+      color: var(--color-white);
+
+      padding: 0.75rem;
    }
 }
