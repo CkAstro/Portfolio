@@ -1,0 +1,22 @@
+.canvas3d {
+   width: 100%;
+   height: 100%;
+   display: block !important;
+
+   &__wrapper {
+      width: 100%;
+      height: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+
+      .canvas3d__hud {
+         position: absolute;
+         top: 0;
+         left: 0;
+         padding: 1rem;
+         background-color: #0005;
+         color: green;
+      }
+   }
+}
