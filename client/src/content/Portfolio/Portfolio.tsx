@@ -48,21 +48,26 @@ export const Portfolio: React.FC<SectionProps> = ({ id }) => {
             <div className={styles.imageContainer}>
                {portfolioItems
                   .slice(0, 4)
-                  .map(({ header, tech, description, imageUri, altText, imageSizes }, index) => (
-                     <Showcase
-                        onClick={(): void => handleClick(<h1>{header}</h1>)}
-                        key={altText}
-                        onPointerEnter={(): void => setActiveShowcase(index)}
-                        onPointerLeave={(): void => setActiveShowcase(-1)}
-                        isActive={activeShowcase === index}
-                        header={header}
-                        tech={tech}
-                        description={description}
-                        image={
-                           <LazyImage sizes={imageSizes} altText={altText} imageUri={imageUri} />
-                        }
-                     />
-                  ))}
+                  .map(
+                     (
+                        { header, tech, description, imageUri, altText, imageSizes, content },
+                        index
+                     ) => (
+                        <Showcase
+                           onClick={(): void => handleClick(content ?? <h1>{header}</h1>)}
+                           key={altText}
+                           onPointerEnter={(): void => setActiveShowcase(index)}
+                           onPointerLeave={(): void => setActiveShowcase(-1)}
+                           isActive={activeShowcase === index}
+                           header={header}
+                           tech={tech}
+                           description={description}
+                           image={
+                              <LazyImage sizes={imageSizes} altText={altText} imageUri={imageUri} />
+                           }
+                        />
+                     )
+                  )}
             </div>
          </AnimatedCube>
       </Section>

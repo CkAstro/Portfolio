@@ -1,3 +1,5 @@
+import { Instabilities } from './Instabilities';
+
 interface PortfolioItem {
    header: string | React.ReactElement;
    tech: string | React.ReactElement;
@@ -5,6 +7,7 @@ interface PortfolioItem {
    imageUri: string;
    altText: string;
    imageSizes: { width: number; height: number; maxSize: number }[];
+   content?: React.ReactElement;
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -55,6 +58,7 @@ export const portfolioItems: PortfolioItem[] = [
          { width: 366, height: 229, maxSize: 800 },
          { width: 488, height: 305, maxSize: -1 },
       ],
+      content: <Instabilities />,
    },
    {
       header: (
