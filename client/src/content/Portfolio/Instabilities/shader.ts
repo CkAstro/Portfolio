@@ -1,5 +1,4 @@
 // cSpell:words cval, highp
-
 import type { ShaderProgram } from '@/components/Canvas/Canvas3d';
 
 const vsSource: ShaderProgram['vsSource'] = `#version 300 es
@@ -52,7 +51,7 @@ const fsSource: ShaderProgram['fsSource'] = `#version 300 es
       if (cube.x > cube.y) discard;
 
       cube.x = max(cube.x, 0.0);
-      vec3 dlVec = 1.0 / (vec3(2.0*uResolution) * abs(rayDir));
+      vec3 dlVec = 1.0 / (vec3(uResolution) * abs(rayDir));
       float dl = min(dlVec.x, min(dlVec.y, dlVec.z)) ;
       // dl *= 0.01;
 
@@ -64,8 +63,9 @@ const fsSource: ShaderProgram['fsSource'] = `#version 300 es
          vec4 cval = texture(colorMap, vec2(val, 0.5));
          // cval.a *= 0.01;
 
-         color.rgb += (1.0 - color.a) * cval.a * cval.rgb;
-         color.a += (1.0 - color.a) * cval.a * val;
+         float emission = cval.a * (1.0 - color.a);
+         color.rgb += emission* cval.rgb;
+         color.a += emission;
 
          if (color.a > 0.95) break;
          p += rayDir * dl;
@@ -77,13 +77,10 @@ const fsSource: ShaderProgram['fsSource'] = `#version 300 es
 const material: ShaderProgram['material'] = {
    uProjectionMatrix: { size: 'Matrix4fv' },
    uModelViewMatrix: { size: 'Matrix4fv' },
-   // uResolution: { size: '3fv' },
    uResolution: { size: '1f' },
    volumeData: { size: 'texture3D' },
    colorMap: { size: 'texture2D' },
-   // uHideCSM: { size: '1f' },
    uEyePos: { size: '3fv' },
-   // nu: { size: '1f' },
 };
 
 const model: ShaderProgram['model'] = {
@@ -91,7 +88,7 @@ const model: ShaderProgram['model'] = {
    indices: { size: 3, type: 'ELEMENT_ARRAY_BUFFER', dataType: 'UNSIGNED_BYTE' },
 };
 
-export const emission: ShaderProgram = {
+export const volumeShader: ShaderProgram = {
    vsSource,
    fsSource,
    material,

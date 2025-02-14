@@ -5,7 +5,13 @@ import { renderFrame } from './renderFrame';
 export const Instabilities: React.FC = () => {
    const drawTrigger = useRef({});
 
-   return <Canvas3d renderFrame={renderFrame} drawTrigger={drawTrigger} />;
+   return (
+      <Canvas3d
+         renderFrame={renderFrame}
+         drawTrigger={drawTrigger}
+         options={{ antialias: true, renderAtRefreshRate: true }}
+      />
+   );
 };
 
 export default Instabilities;

@@ -162,7 +162,7 @@ const loadVolumetricImageTexture = async (
    return Promise.resolve();
 };
 
-const __loadVolumetricImageTexture = async (
+const loadVolumetricImageTexture2 = async (
    gl: WebGL2RenderingContext,
    imageUri: string,
    callback?: (texture: WebGLTexture) => void
@@ -180,15 +180,17 @@ const __loadVolumetricImageTexture = async (
 
       let volRes;
       if (image.width === image.height) {
-         const guess = image.width ** (2 / 3);
+         const guess = image.width ** (2.0 / 3.0);
          if (Math.abs(guess - Math.round(guess)) < 0.1) volRes = Math.round(guess);
       }
-      if (volRes === undefined)
-         throw new Error('non-pow(2)**3 image dimensions not yet accounted for');
+      if (volRes === undefined) {
+         console.error('non-pow(2)**3 image dimensions not yet accounted for');
+         return;
+      }
 
       // init 3D texture
       gl.bindTexture(gl.TEXTURE_3D, texture);
-      gl.texStorage3D(gl.TEXTURE_3D, 1, gl.RG32F, volRes, volRes, volRes);
+      gl.texStorage3D(gl.TEXTURE_3D, 1, gl.R8, volRes, volRes, volRes);
       gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_WRAP_R, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -197,7 +199,7 @@ const __loadVolumetricImageTexture = async (
       // loop through image and fill texture
       let sliceCount = Math.floor(volRes ** 0.5);
       if (volRes % sliceCount !== 0) sliceCount += 1; // add one if not perfect square
-      const dataBuffer = new Float32Array(2 * volRes * volRes * volRes);
+      const dataBuffer = new Uint8Array(volRes ** 3);
       for (let k = 0; k < volRes; k++) {
          // grab each slice, scale, and add to dataBuffer
          const x = k % sliceCount;
@@ -206,13 +208,14 @@ const __loadVolumetricImageTexture = async (
 
          for (let j = 0; j < volRes; j++) {
             for (let i = 0; i < volRes; i++) {
-               dataBuffer[2 * k * volRes * volRes + 2 * j * volRes + 2 * i + 0] =
-                  img.data[4 * j * volRes + 4 * i + 0] / 255.0;
+               // NOTE, this is (j,i,k) instead of (k,i,j) to re-orient incorrect images
+               dataBuffer[j * volRes * volRes + i * volRes + k] = img.data[4 * j * volRes + 4 * i];
             }
          }
       }
 
       // add to texture layer by layer
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false); // not sure why this turns on...
       gl.texSubImage3D(
          gl.TEXTURE_3D,
          0,
@@ -222,12 +225,10 @@ const __loadVolumetricImageTexture = async (
          volRes,
          volRes,
          volRes,
-         gl.RG,
-         gl.FLOAT,
+         gl.RED,
+         gl.UNSIGNED_BYTE,
          dataBuffer
       );
-
-      console.log('tex init');
       if (callback !== undefined) callback(texture);
    };
    image.crossOrigin = '';
@@ -261,8 +262,9 @@ const loadImageTexture = async (
    return Promise.resolve();
 };
 
-export const texture = {
+export const textureLoader = {
    loadVolumetricTexture,
    loadVolumetricImageTexture,
+   loadVolumetricImageTexture2,
    loadImageTexture,
 };

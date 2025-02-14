@@ -35,12 +35,14 @@ export const Portfolio: React.FC<SectionProps> = ({ id }) => {
          <AnimatedCube
             ref={cubeControls}
             altFace={
-               <Overlay
-                  onClose={(): void => {
-                     cubeControls.current?.toMainFace();
-                     hideOverlay();
-                  }}
-               />
+               <div style={{ width: '100%', height: '100%', maxWidth: '100vw' }}>
+                  <Overlay
+                     onClose={(): void => {
+                        cubeControls.current?.toMainFace();
+                        hideOverlay();
+                     }}
+                  />
+               </div>
             }
             altFacePosition="right"
             style={{ margin: '0 auto' }}
